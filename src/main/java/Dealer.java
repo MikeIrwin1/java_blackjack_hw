@@ -1,14 +1,18 @@
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.BitSet;
 import java.util.Random;
 
 public class Dealer {
 
+    private ArrayList<Card> hand;
     private ArrayList<Card> toBeDealt;
     private Deck deck;
 
     public Dealer(Deck deck){
         this.deck = deck;
         this.toBeDealt = new ArrayList<>();
+        this.hand = new ArrayList<>();
     }
 
     public ArrayList<Card> getToBeDealt() {
@@ -26,5 +30,11 @@ public class Dealer {
 
     }
 
+    public ArrayList getHand() {
+        return this.hand;
+    }
 
+    public void retainCard() {
+        this.hand.add(this.toBeDealt.remove(0));
+    }
 }

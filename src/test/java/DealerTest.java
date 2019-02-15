@@ -5,19 +5,15 @@ import static org.junit.Assert.assertEquals;
 
 public class DealerTest {
 
-    Dealer dealer;
-    Deck deck;
-    Player player1;
-    Player player2;
+    private Dealer dealer;
+    private Player player1;
 
     @Before
     public void before(){
-        deck = new Deck();
+        Deck deck = new Deck();
         deck.shuffle();
         dealer = new Dealer(deck);
-
         player1 = new Player();
-        player2 = new Player();
     }
 
     @Test
@@ -31,6 +27,18 @@ public class DealerTest {
         dealer.drawCard();
         dealer.dealCard(player1);
         assertEquals(0, dealer.getToBeDealt().size());
+    }
+
+    @Test
+    public void dealerCanHaveHand(){
+        assertEquals(0, dealer.getHand().size());
+    }
+
+    @Test
+    public void dealerCanAddToHand(){
+        dealer.drawCard();
+        dealer.retainCard();
+        assertEquals(1,dealer.getHand().size());
     }
 
 }
