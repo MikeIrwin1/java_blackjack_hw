@@ -46,10 +46,11 @@ public class Deck {
         Collections.shuffle(this.cards);
     }
 
-    public void dealCard(){
+    public Card dealCard(){
         shuffle();
         Card dealtCard = this.cards.remove(0);
         this.dealtCards.add(dealtCard);
+        return dealtCard;
 
     }
 

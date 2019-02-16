@@ -27,5 +27,18 @@ public class GameTest {
         assertEquals(dealer, game.getDealer());
     }
 
+    @Test
+    public void canSetUpRound(){
+        Card card1 = dealer.drawCard();
+        dealer.dealCard(player, card1);
+        Card card2 = dealer.drawCard();
+        dealer.retainCard(card2);
+        Card card3 = dealer.drawCard();
+        dealer.dealCard(player, card2);
+        Card card4 = dealer.drawCard();
+        dealer.retainCard(card4);
+
+    }
+
 
 }

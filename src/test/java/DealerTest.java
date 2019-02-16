@@ -1,7 +1,7 @@
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class DealerTest {
 
@@ -17,17 +17,17 @@ public class DealerTest {
     }
 
     @Test
-    public void dealerHasCardsToDeal(){
-        dealer.drawCard();
-        assertEquals(1, dealer.getToBeDealt().size());
+    public void dealerCanDrawCard(){
+        assertNotNull(dealer.drawCard().getSuit());
     }
 
     @Test
-    public void dealerCanPassOverCard(){
-        dealer.drawCard();
-        dealer.dealCard(player1);
-        assertEquals(0, dealer.getToBeDealt().size());
+    public void dealerCanDealCardToPlayer(){
+        Card card = dealer.drawCard();
+        dealer.dealCard(player1, card);
+        assertEquals(1, player1.getHand().size());
     }
+
 
     @Test
     public void dealerCanHaveHand(){
@@ -36,9 +36,18 @@ public class DealerTest {
 
     @Test
     public void dealerCanAddToHand(){
-        dealer.drawCard();
-        dealer.retainCard();
+        Card card = dealer.drawCard();
+        dealer.retainCard(card);
         assertEquals(1,dealer.getHand().size());
+    }
+
+    @Test
+    public void dealerCanCheckValue(){
+        Card card1 = new Card(SuitType.SPADES, RankType.FIVE);
+        Card card2 = new Card(SuitType.SPADES, RankType.FOUR);
+        dealer.retainCard(card1);
+        dealer.retainCard(card2);
+        assertEquals(9, dealer.getHandValue());
     }
 
 }

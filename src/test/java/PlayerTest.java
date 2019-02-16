@@ -28,8 +28,8 @@ public class PlayerTest {
 
     @Test
     public void playerCanReceiveCard(){
-        dealer.drawCard();
-        dealer.dealCard(player);
+        Card drawnCard = dealer.drawCard();
+        dealer.dealCard(player, drawnCard);
         assertEquals(1, player.getHand().size());
     }
 
