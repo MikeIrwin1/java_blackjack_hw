@@ -47,4 +47,13 @@ public class DeckTest {
         assertEquals(51, deck.numberOfCards());
         assertEquals(1, deck.numberOfDealtCards());
     }
+
+    @Test
+    public void deckCanBeReset(){
+        deck.dealCard();
+        deck.dealCard();
+        assertEquals(50, deck.numberOfCards());
+        deck.reset();
+        assertEquals(52, deck.numberOfCards());
+    }
 }

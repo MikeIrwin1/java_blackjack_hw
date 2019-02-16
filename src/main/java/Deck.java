@@ -57,4 +57,8 @@ public class Deck {
     public int numberOfDealtCards() {
         return this.dealtCards.size();
     }
+
+    public void reset(){
+        this.cards.addAll(this.dealtCards);
+    }
 }

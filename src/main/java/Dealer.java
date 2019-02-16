@@ -11,6 +11,10 @@ public class Dealer {
         this.hand = new ArrayList<>();
     }
 
+    public Deck getDeck() {
+        return deck;
+    }
+
     public Card drawCard(){
         return deck.dealCard();
     }

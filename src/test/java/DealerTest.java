@@ -49,5 +49,4 @@ public class DealerTest {
         dealer.retainCard(card2);
         assertEquals(9, dealer.getHandValue());
     }
-
 }
