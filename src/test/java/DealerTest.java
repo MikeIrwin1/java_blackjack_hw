@@ -7,13 +7,19 @@ public class DealerTest {
 
     private Dealer dealer;
     private Player player1;
+    private Deck deck;
 
     @Before
     public void before(){
-        Deck deck = new Deck();
+        deck = new Deck();
         deck.shuffle();
         dealer = new Dealer(deck);
         player1 = new Player();
+    }
+
+    @Test
+    public void dealerCanGetDeck(){
+        assertEquals(deck, dealer.getDeck());
     }
 
     @Test
@@ -43,10 +49,10 @@ public class DealerTest {
 
     @Test
     public void dealerCanCheckValue(){
-        Card card1 = new Card(SuitType.SPADES, RankType.FIVE);
-        Card card2 = new Card(SuitType.SPADES, RankType.FOUR);
+        Card card1 = new Card(SuitType.SPADES, RankType.TEN);
+        Card card2 = new Card(SuitType.SPADES, RankType.NINE);
         dealer.retainCard(card1);
         dealer.retainCard(card2);
-        assertEquals(9, dealer.getHandValue());
+        assertEquals(19, dealer.getHandValue());
     }
 }

@@ -28,4 +28,42 @@ public class Game {
             dealer.retainCard(cardj);
         }
     }
+
+    public int checkPlayerHandValue() {
+
+        return player.getHandValue();
+    }
+
+    public int checkDealerHandValue() {
+        return dealer.getHandValue();
+    }
+
+    public Boolean checkDealerHandValid(){
+        Boolean valid = false;
+        int value = checkDealerHandValue();
+        if(value >= 16){
+            valid = true;
+        }
+        else {
+            Card card = dealer.drawCard();
+            dealer.retainCard(card);
+        }
+        return valid;
+    }
+
+    public String determineWinner() {
+        int playerValue = checkPlayerHandValue();
+        if (playerValue == 21 && player.getHand().size() == 2){
+            return "Blackjack! player wins!";
+        }
+        int dealerValue = checkDealerHandValue();
+        if(playerValue > dealerValue){
+            return "player wins!";
+        }
+        else {
+            return "dealer wins!";
+        }
+    }
+
+
 }

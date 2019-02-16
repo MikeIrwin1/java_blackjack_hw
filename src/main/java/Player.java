@@ -2,19 +2,32 @@ import java.util.ArrayList;
 
 public class Player {
 
-    Card card;
+
     private ArrayList<Card> hand;
+    private Boolean isBust;
+    private Boolean twist;
 
     public Player(){
         this.hand = new ArrayList<>();
+        this.isBust = false;
+        this.twist = false;
+
     }
 
-    public void receiveCard(Card dealtCard){
-        this.hand.add(dealtCard);
+    public Boolean getBust() {
+        return isBust;
+    }
+
+    public Boolean getTwist(){
+        return this.twist;
     }
 
     public ArrayList<Card> getHand() {
         return this.hand;
+    }
+
+    public void receiveCard(Card dealtCard){
+        this.hand.add(dealtCard);
     }
 
     public int getHandValue() {
